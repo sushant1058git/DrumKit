@@ -6,11 +6,13 @@ document.querySelectorAll(".drum")[i].addEventListener("click", function (){   /
 
     var buttonInnerHtml=this.innerHTML;
     makesound(buttonInnerHtml)
+    buttonanimatio(buttonInnerHtml)
 })  
 }
 
 document.addEventListener("keydown", function(event){
     makesound(event.key)
+    buttonanimatio(event.key)
 })
 
 function makesound(key){
@@ -48,5 +50,15 @@ function makesound(key){
 
     }
 }
-// var audio= new Audio("sounds/tom-1.mp3");
-// audio.play();
+
+function buttonanimatio(currentkey){
+
+    var active_button=document.querySelector("."+currentkey);
+    active_button.classList.add("pressed");
+    setTimeout(function(){                  /**setTimeout(function, milliseconds, param1, param2, ...) */
+        active_button.classList.remove("pressed");
+    },100)  
+    
+}
+
+
